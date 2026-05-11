@@ -25,7 +25,7 @@ processors:
 
   # Composite tail-sampling: keep all errors + slow + 1% healthy
   tail_sampling:
-    decision_wait: 30s
+    decision_wait: 1s
     num_traces: 50000
     expected_new_traces_per_sec: 100
     policies:
@@ -54,14 +54,14 @@ exporters:
       insecure: true
 
   debug:
-    verbosity: basic
+    verbosity: detailed
 
 service:
   pipelines:
     traces:
       receivers: [otlp]
-      processors: [tail_sampling, resource, batch]
-      exporters: [otlp/jaeger]
+      processors: [resource]
+      exporters: [otlp/jaeger, debug]
 
     metrics:
       receivers: [otlp, prometheus]
@@ -70,6 +70,6 @@ service:
 
   telemetry:
     logs:
-      level: warn
+      level: info
     metrics:
       address: 0.0.0.0:8888
