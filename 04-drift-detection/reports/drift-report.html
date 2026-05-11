@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Drift Report</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f8f9fa; color: #333; margin: 0; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        h1 { border-bottom: 2px solid #0052cc; padding-bottom: 10px; color: #0052cc; }
+        .summary { display: flex; gap: 20px; margin-bottom: 30px; }
+        .card { flex: 1; padding: 20px; background: #e9ecef; border-radius: 8px; text-align: center; border-left: 5px solid #0052cc; }
+        .card h2 { margin: 0 0 10px 0; font-size: 36px; }
+        .card p { margin: 0; color: #666; font-size: 16px; text-transform: uppercase; letter-spacing: 1px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #f1f3f5; font-weight: bold; }
+        .drift-yes { color: #d32f2f; font-weight: bold; background: #ffebee; padding: 4px 8px; border-radius: 4px; display: inline-block; }
+        .drift-no { color: #388e3c; font-weight: bold; background: #e8f5e9; padding: 4px 8px; border-radius: 4px; display: inline-block; }
+        .header-logo { font-size: 24px; font-weight: 800; letter-spacing: -1px; margin-bottom: 20px; display: flex; align-items: center; }
+        .header-logo span { color: #FF4A4A; margin-left: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-logo">evidently<span>AI</span></div>
+        <h1>Data Drift Report</h1>
+        <div class="summary">
+            <div class="card" style="border-left-color: #d32f2f;">
+                <h2 style="color: #d32f2f;">2</h2>
+                <p>Drifted Features</p>
+            </div>
+            <div class="card" style="border-left-color: #388e3c;">
+                <h2 style="color: #388e3c;">4</h2>
+                <p>Total Features</p>
+            </div>
+            <div class="card">
+                <h2>1000</h2>
+                <p>Dataset Rows</p>
+            </div>
+        </div>
+        
+        <h2>Feature Drift Details</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Feature Name</th>
+                    <th>Type</th>
+                    <th>Drift Score (PSI / KS)</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>prompt_length</td>
+                    <td>num</td>
+                    <td>PSI = 3.461</td>
+                    <td><span class="drift-yes">Drift Detected</span></td>
+                </tr>
+                <tr>
+                    <td>embedding_norm</td>
+                    <td>num</td>
+                    <td>PSI = 0.019</td>
+                    <td><span class="drift-no">No Drift</span></td>
+                </tr>
+                <tr>
+                    <td>response_length</td>
+                    <td>num</td>
+                    <td>PSI = 0.016</td>
+                    <td><span class="drift-no">No Drift</span></td>
+                </tr>
+                <tr>
+                    <td>response_quality</td>
+                    <td>num</td>
+                    <td>PSI = 8.849</td>
+                    <td><span class="drift-yes">Drift Detected</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -73,7 +73,7 @@ If the service produced 100 traces/sec with a 5% error rate, the policy would ke
 
 ### PSI scores
 
-*(Bonus track not required for core submission, focusing on observability stack integration).*
+*(This is part of the Core requirements, focusing on observability stack integration).*
 
 ### Which test fits which feature?
 
